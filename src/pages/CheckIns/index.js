@@ -17,7 +17,7 @@ import {
   List,
   CheckIn,
   Left,
-  Rigth,
+  CheckDate,
 } from './styles';
 
 export default function CheckIns() {
@@ -87,7 +87,7 @@ export default function CheckIns() {
         renderItem={({item}) => (
           <CheckIn>
             <Left>{`Check-in #${item.id}`}</Left>
-            <Rigth>{item.dateParsed}</Rigth>
+            <CheckDate>{item.dateParsed}</CheckDate>
           </CheckIn>
         )}
       />

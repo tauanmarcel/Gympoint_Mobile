@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import Button from '~/components/Button';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   padding: 20px;
   background: #f5f5f5;
   display: flex;
@@ -37,7 +37,7 @@ export const Left = styled.Text`
   font-size: 16px;
 `;
 
-export const Rigth = styled.Text`
+export const CheckDate = styled.Text`
   color: #727272;
   font-size: 16px;
 `;
