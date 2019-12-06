@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import Button from '~/components/Button';
 
 export const Container = styled.SafeAreaView`
-  padding: 50px 20px 20px
+  padding: 50px 20px 20px;
   background: #f5f5f5;
   display: flex;
   height: 100%;
@@ -16,6 +16,7 @@ export const TextArea = styled.TextInput`
   border-radius: 4px;
   background: #fff;
   border: solid 1px #d8d8d8;
+  text-align-vertical: top;
 `;
 
 export const SubmitButton = styled(Button)``;

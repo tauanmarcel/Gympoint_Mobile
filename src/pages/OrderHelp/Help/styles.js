@@ -12,10 +12,6 @@ export const Container = styled.SafeAreaView`
 
 export const Form = styled.View``;
 
-export const SubmitButton = styled(Button)`
-  margin-top: 30px;
-`;
-
 export const List = styled.FlatList.attrs({
   showVerticalScrollIndicator: false,
   contentContainerStyle: {marginTop: 15},

@@ -1,11 +1,11 @@
 import React from 'react';
+import {View, TouchableOpacity} from 'react-native';
 import {formatRelative, parseISO} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import {TouchableOpacity} from 'react-native';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import Header from '~/components/Header';
 import {Container, Content, Headers, Left, SimpleText} from './styles';
 
 export default function Answer({navigation}) {
@@ -16,19 +16,22 @@ export default function Answer({navigation}) {
   console.tron.log(navigation);
 
   return (
-    <Container>
-      <Content>
-        <Headers>
-          <Left>PERGUNTA</Left>
-          <SimpleText>{answerAtParsed}</SimpleText>
-        </Headers>
-        <SimpleText>{question}</SimpleText>
-        <Headers>
-          <Left>RESPOSTA</Left>
-        </Headers>
-        <SimpleText>{answer}</SimpleText>
-      </Content>
-    </Container>
+    <View>
+      <Header />
+      <Container>
+        <Content>
+          <Headers>
+            <Left>PERGUNTA</Left>
+            <SimpleText>{answerAtParsed}</SimpleText>
+          </Headers>
+          <SimpleText>{question}</SimpleText>
+          <Headers>
+            <Left>RESPOSTA</Left>
+          </Headers>
+          <SimpleText>{answer}</SimpleText>
+        </Content>
+      </Container>
+    </View>
   );
 }
 

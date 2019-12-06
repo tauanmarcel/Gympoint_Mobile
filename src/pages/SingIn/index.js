@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
+import {Image} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {Image} from 'react-native';
 import {singInRequest} from '~/store/modules/persist/actions';
 
 import {Container, Form, FormInput, SubmitButton} from './styles';

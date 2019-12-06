@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
-import {TouchableOpacity, Alert} from 'react-native';
+import {TouchableOpacity, Alert, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {Container, Form, TextArea, SubmitButton} from './styles';
+import Header from '~/components/Header';
 
 import api from '~/services/api';
 
@@ -26,20 +27,23 @@ export default function NewHelp() {
   }
 
   return (
-    <Container>
-      <Form>
-        <TextArea
-          multiline
-          numberOfLines={15}
-          placeholder="Inclua seu pedido de auxílio"
-          value={question}
-          onChangeText={setQuestion}
-        />
-        <SubmitButton loading={loading} onPress={handleSubmit}>
-          Enviar pedido
-        </SubmitButton>
-      </Form>
-    </Container>
+    <View>
+      <Header />
+      <Container>
+        <Form>
+          <TextArea
+            multiline
+            numberOfLines={15}
+            placeholder="Inclua seu pedido de auxílio"
+            value={question}
+            onChangeText={setQuestion}
+          />
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Enviar pedido
+          </SubmitButton>
+        </Form>
+      </Container>
+    </View>
   );
 }
 

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {Alert, View} from 'react-native';
 import {useSelector} from 'react-redux';
-
-import {Alert} from 'react-native';
 
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -9,6 +8,7 @@ import pt from 'date-fns/locale/pt';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
+import Header from '~/components/Header';
 
 import {
   Container,
@@ -74,24 +74,27 @@ export default function CheckIns() {
   }
 
   return (
-    <Container>
-      <Form>
-        <SubmitButton loading={loading} onPress={handleSubmit}>
-          Novo check-in
-        </SubmitButton>
-      </Form>
+    <View>
+      <Header />
+      <Container>
+        <Form>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Novo check-in
+          </SubmitButton>
+        </Form>
 
-      <List
-        data={checkins}
-        keyExtractor={item => String(item.id)}
-        renderItem={({item}) => (
-          <CheckIn>
-            <Left>{`Check-in #${item.id}`}</Left>
-            <CheckDate>{item.dateParsed}</CheckDate>
-          </CheckIn>
-        )}
-      />
-    </Container>
+        <List
+          data={checkins}
+          keyExtractor={item => String(item.id)}
+          renderItem={({item}) => (
+            <CheckIn>
+              <Left>{`Check-in #${item.id}`}</Left>
+              <CheckDate>{item.dateParsed}</CheckDate>
+            </CheckIn>
+          )}
+        />
+      </Container>
+    </View>
   );
 }
 

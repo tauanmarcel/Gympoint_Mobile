@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   padding: 50px 20px 20px;
   background: #f5f5f5;
-  display: flex;
   height: 100%;
 `;
 

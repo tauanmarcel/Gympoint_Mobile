@@ -8,18 +8,11 @@ import '~/config/ReactotronConfig';
 import {store, persistor} from './store';
 import App from './App';
 
-import Header from '~/components/Header';
-
 export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor="#fff"
-          networkActivityIndicatorVisible
-        />
-        <Header />
+        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
         <App />
       </PersistGate>
     </Provider>
