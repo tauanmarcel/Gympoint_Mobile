@@ -15,7 +15,10 @@ export const SubmitButton = styled(Button)``;
 
 export const List = styled.FlatList.attrs({
   showVerticalScrollIndicator: false,
-  contentContainerStyle: {marginTop: 15},
+  contentContainerStyle: {
+    marginTop: 15,
+    paddingBottom: 125,
+  },
 })``;
 
 export const CheckIn = styled.View`
@@ -24,11 +27,11 @@ export const CheckIn = styled.View`
   border-radius: 4px;
   background: #fff;
   border: solid 1px #d8d8d8;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 65px;
 `;
 
 export const Left = styled.Text`
@@ -40,4 +43,6 @@ export const Left = styled.Text`
 export const CheckDate = styled.Text`
   color: #727272;
   font-size: 16px;
+  max-width: 50%;
+  text-align: right;
 `;

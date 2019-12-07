@@ -1,8 +1,6 @@
 import styled from 'styled-components/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-import Button from '~/components/Button';
-
 export const Container = styled.SafeAreaView`
   padding: 20px;
   background: #f5f5f5;
@@ -14,7 +12,10 @@ export const Form = styled.View``;
 
 export const List = styled.FlatList.attrs({
   showVerticalScrollIndicator: false,
-  contentContainerStyle: {marginTop: 15},
+  contentContainerStyle: {
+    marginTop: 15,
+    paddingBottom: 130,
+  },
 })``;
 
 export const AnswerContent = styled(TouchableOpacity)`
@@ -24,10 +25,13 @@ export const AnswerContent = styled(TouchableOpacity)`
   background: #fff;
   border: solid 1px #d8d8d8;
   display: flex;
+  min-height: 200px;
 `;
 
 export const Status = styled.View`
   flex-direction: row;
+  height: 20px;
+  margin-bottom: 10px;
 `;
 
 export const TxtStatus = styled.Text`
@@ -40,6 +44,8 @@ export const TxtStatus = styled.Text`
 export const AnswerDate = styled.Text`
   color: #727272;
   font-size: 16px;
+  max-width: 50%;
+  text-align: right;
 `;
 
 export const Content = styled.View`

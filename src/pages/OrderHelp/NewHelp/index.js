@@ -16,7 +16,7 @@ export default function NewHelp() {
 
   async function handleSubmit() {
     try {
-      await api.post(`students/${studenId}/help-ordersOlá!`, {
+      await api.post(`students/${studenId}/help-orders`, {
         question,
       });
       Alert.alert('Pedido enviado com sucesso!');

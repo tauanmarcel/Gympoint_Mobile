@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
+import { withNavigationFocus } from 'react-navigation';
 
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -26,16 +27,22 @@ import {
 
 import Button from '~/components/Button';
 
-export default function Help({navigation}) {
+function Help({navigation, isFocused}) {
   const [helps, setHelps] = useState([]);
+  const [page, setPage] = useState(1);
+  const [waiting, setWaiting] = useState(false);
 
   const studenId = useSelector(state => state.persist.student.id);
   const loading = useSelector(state => state.persist.loading);
 
-  async function loadHelps(id) {
-    const response = await api.get(`help-orders/${id}/list-for-student`);
+  async function loadHelps() {
+    if (waiting) return;
 
-    const dateParsed = response.data.map(help => ({
+    const response = await api.get(
+      `help-orders/${studenId}/list-for-student?page=${page}`,
+    );
+
+    const helpParsed = response.data.map(help => ({
       ...help,
       dateParsed: formatRelative(parseISO(help.createdAt), new Date(), {
         locale: pt,
@@ -43,13 +50,39 @@ export default function Help({navigation}) {
       }),
     }));
 
-    setHelps(dateParsed);
+    setHelps([...helps, ...helpParsed]);
+    setPage(page + 1);
+    if (response.data.length > 0) setWaiting(false);
   }
 
   useEffect(() => {
-    loadHelps(studenId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      loadHelps();
   }, []);
+
+  useEffect(() => {
+    if(isFocused){
+      reloadHelps(isFocused);
+    }    
+  }, [isFocused]);
+
+  
+  async function reloadHelps(){
+    setHelps([]);
+    const response = await api.get(
+      `help-orders/${studenId}/list-for-student?page=${1}`,
+    );
+    const helpParsed = response.data.map(help => ({
+      ...help,
+      dateParsed: formatRelative(parseISO(help.createdAt), new Date(), {
+        locale: pt,
+        addSuffix: true,
+      }),
+    }));
+
+    console.tron.log(helpParsed);
+
+    setHelps(helpParsed);
+  }
 
   return (
     <View>
@@ -66,6 +99,8 @@ export default function Help({navigation}) {
         <List
           data={helps}
           keyExtractor={item => String(item.id)}
+          onEndReached={loadHelps}
+          enEndReachedThreshold={0.1}
           renderItem={({item}) => (
             <AnswerContent
               activeOpacity={item.answer ? 0.5 : 1}
@@ -110,3 +145,5 @@ Help.navigationOptions = ({navigation}) => ({
     </Prev>
   ),
 });
+
+export default withNavigationFocus(Help);

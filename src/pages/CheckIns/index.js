@@ -22,12 +22,18 @@ import {
 
 export default function CheckIns() {
   const [checkins, setCheckins] = useState([]);
+  const [page, setPage] = useState(1);
+  const [waiting, setWaiting] = useState(false);
 
   const studenId = useSelector(state => state.persist.student.id);
   const loading = useSelector(state => state.persist.loading);
 
   async function loadCheckins(id) {
-    const response = await api.get(`students/${id}/checkins`);
+    if (waiting) return;
+
+    setWaiting(true);
+
+    const response = await api.get(`students/${id}/checkins?page=${page}`);
 
     const checkParsed = response.data.map(checkin => ({
       ...checkin,
@@ -37,7 +43,12 @@ export default function CheckIns() {
       }),
     }));
 
-    setCheckins(checkParsed);
+    setCheckins([...checkins, ...checkParsed]);
+    setPage(page + 1);
+
+    if (response.data.length > 0) {
+      setWaiting(false);
+    }
   }
 
   useEffect(() => {
@@ -86,6 +97,8 @@ export default function CheckIns() {
         <List
           data={checkins}
           keyExtractor={item => String(item.id)}
+          onEndReached={() => loadCheckins(studenId)}
+          onEndReachedThreshold={0.1}
           renderItem={({item}) => (
             <CheckIn>
               <Left>{`Check-in #${item.id}`}</Left>
