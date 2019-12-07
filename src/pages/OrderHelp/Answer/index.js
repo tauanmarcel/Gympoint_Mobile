@@ -6,7 +6,14 @@ import pt from 'date-fns/locale/pt';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Header from '~/components/Header';
-import {Container, Content, Headers, Left, SimpleText} from './styles';
+import {
+  Container,
+  Content,
+  Headers,
+  Left,
+  SimpleTextRight,
+  SimpleText,
+} from './styles';
 
 export default function Answer({navigation}) {
   const {question, answer, answer_at} = navigation.state.params.item;
@@ -22,7 +29,7 @@ export default function Answer({navigation}) {
         <Content>
           <Headers>
             <Left>PERGUNTA</Left>
-            <SimpleText>{answerAtParsed}</SimpleText>
+            <SimpleTextRight>{answerAtParsed}</SimpleTextRight>
           </Headers>
           <SimpleText>{question}</SimpleText>
           <Headers>

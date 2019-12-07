@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
-import { withNavigationFocus } from 'react-navigation';
+import {withNavigationFocus} from 'react-navigation';
 
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -55,18 +55,7 @@ function Help({navigation, isFocused}) {
     if (response.data.length > 0) setWaiting(false);
   }
 
-  useEffect(() => {
-      loadHelps();
-  }, []);
-
-  useEffect(() => {
-    if(isFocused){
-      reloadHelps(isFocused);
-    }    
-  }, [isFocused]);
-
-  
-  async function reloadHelps(){
+  async function reloadHelps() {
     setHelps([]);
     const response = await api.get(
       `help-orders/${studenId}/list-for-student?page=${1}`,
@@ -79,10 +68,20 @@ function Help({navigation, isFocused}) {
       }),
     }));
 
-    console.tron.log(helpParsed);
-
     setHelps(helpParsed);
   }
+
+  useEffect(() => {
+    loadHelps();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      reloadHelps(isFocused);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFocused]);
 
   return (
     <View>

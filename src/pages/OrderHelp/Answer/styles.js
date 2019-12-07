@@ -29,3 +29,10 @@ export const SimpleText = styled.Text`
   color: #727272;
   font-size: 16px;
 `;
+
+export const SimpleTextRight = styled.Text`
+  color: #727272;
+  font-size: 16px;
+  max-width: 50%;
+  text-align: right;
+`;

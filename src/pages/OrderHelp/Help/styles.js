@@ -11,7 +11,7 @@ export const Container = styled.SafeAreaView`
 export const Form = styled.View``;
 
 export const List = styled.FlatList.attrs({
-  showVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     marginTop: 15,
     paddingBottom: 130,
