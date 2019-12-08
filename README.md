@@ -20,7 +20,7 @@ Para não fugir muito do layout, coloquei apenas um botão de sair, mas após a 
 Desenvolvi o aplicativo usando as configurações abaixo:
 
     . Plataforma: Android
-    . Banco proncipal: Postgres
+    . Banco de dados principal: Postgres
     . Armazenamento de falhas: Redis
     . Sistema Operacional: Windows 10 Home Single Language
     . Docker: Toolbox
