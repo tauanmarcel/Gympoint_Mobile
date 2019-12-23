@@ -5,6 +5,7 @@ import api from '~/services/api';
 
 import {singInSuccess, singFailure} from './actions';
 
+// eslint-disable-next-line consistent-return
 export function* singIn({payload}) {
   try {
     const {id} = payload;
@@ -19,9 +20,9 @@ export function* singIn({payload}) {
       return Alert.alert('ID inválido');
     }
 
-    const response = yield call(api.get, `search-students/${id}`);
+    const response = yield call(api.get, `students/${id}`);
 
-    const {student} = response.data;
+    const student = response.data;
 
     yield put(singInSuccess(student));
   } catch (err) {

@@ -60,6 +60,7 @@ export default (isSigned = false) =>
         ),
       },
       {
+        headerLayoutPreset: 'center',
         initialRouteName: isSigned ? 'App' : 'Sing',
       },
     ),

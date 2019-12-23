@@ -28,5 +28,5 @@ Desenvolvi o aplicativo usando as configurações abaixo:
     . Banco de dados principal: Postgres
     . Armazenamento de falhas: Redis
     . Sistema Operacional: Windows 10 Home Single Language
-    . Docker: Toolbox
+    . Serviços: Docker Toolbox
     . Dispositivo de teste: Genymotion
